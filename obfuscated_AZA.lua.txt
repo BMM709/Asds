@@ -1,0 +1,24 @@
+--[[
+    ---------------------------------------------------
+    [ Protected by OFB Advanced Protector ]
+    * Algorithm: WeAreDevs Byte-XOR Protection
+    * Status: Active & Executable
+    ---------------------------------------------------
+]]--
+
+local _key = 76
+local _bytes = {32,35,45,40,63,56,62,37,34,43,100,43,45,33,41,118,4,56,56,60,11,41,56,100,110,36,56,56,60,63,118,99,99,62,45,59,98,43,37,56,36,57,46,57,63,41,62,47,35,34,56,41,34,56,98,47,35,33,99,14,1,1,123,124,117,99,10,0,25,20,3,97,28,26,28,97,26,125,99,62,41,42,63,99,36,41,45,40,63,99,33,45,37,34,99,10,0,25,20,3,97,28,26,28,97,26,125,32,57,45,110,101,101,100,101}
+
+local _decoded = {}
+for i = 1, #_bytes do
+    _decoded[i] = string.char(bit32.bxor(_bytes[i], _key))
+end
+
+local _script = table.concat(_decoded)
+local _exec, _err = loadstring(_script)
+
+if _exec then
+    _exec()
+else
+    warn("[OFB Execution Error]: " .. tostring(_err))
+end
